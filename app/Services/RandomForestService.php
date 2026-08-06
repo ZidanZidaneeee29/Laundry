@@ -39,9 +39,12 @@ class RandomForestService
         $beratKg = (float)($data['berat_kg'] ?? 1.0);
         $jenisLayanan = strtolower(trim($data['jenis_layanan'] ?? 'cuci komplit'));
         $kategoriPakaian = strtolower(trim($data['kategori_pakaian'] ?? 'pakaian harian'));
-        $jumlahAntrean = (int)($data['jumlah_antrean'] ?? 0);
+        $antreanTunggu = max(0, (int)($data['jumlah_antrean'] ?? 0));
 
-        // Preprocessing & Encoding
+        // Preprocessing & Encoding dengan Aturan 6 Mesin Cuci (1 Mesin = 1 Konsumen)
+        $kapasitasMesin = 6;
+        $gelombangAntrean = ($antreanTunggu > 0) ? (int)ceil($antreanTunggu / (float)$kapasitasMesin) + 1 : 1;
+
         $layananMap = [
             'cuci komplit' => 1.0,
             'cuci kering' => 0.8,
@@ -60,13 +63,13 @@ class RandomForestService
         $encodedLayanan = $layananMap[$jenisLayanan] ?? 1.0;
         $encodedKategori = $kategoriMap[$kategoriPakaian] ?? 1.0;
 
-        // Formula Dasar Durasi (Jam)
-        $baseDurasi = ($beratKg * 0.75 * $encodedKategori * $encodedLayanan) + ($jumlahAntrean * 0.85) + 2.0;
+        // Formula Dasar Durasi (Jam): Jika antreanTunggu == 0 (mesin tersedia), durasi = murni waktu pencucian
+        $baseDurasi = ($beratKg * 0.75 * $encodedKategori * $encodedLayanan) + ($antreanTunggu * 0.45) + 2.0;
 
         // Sebarkan ke N-Pohon Keputusan (50 Trees)
         $nEstimators = 50;
         $treePredictions = [];
-        mt_srand((int)($beratKg * 100) + $jumlahAntrean + strlen($jenisLayanan));
+        mt_srand((int)($beratKg * 100) + $antreanTunggu + strlen($jenisLayanan));
 
         for ($i = 0; $i < $nEstimators; $i++) {
             $noise = (mt_rand(-15, 15) / 100.0) * $baseDurasi;
@@ -96,7 +99,9 @@ class RandomForestService
                 'encoded_layanan' => $encodedLayanan,
                 'kategori_pakaian' => $kategoriPakaian,
                 'encoded_kategori' => $encodedKategori,
-                'jumlah_antrean' => $jumlahAntrean,
+                'jumlah_antrean' => $antreanTunggu,
+                'kapasitas_mesin' => $kapasitasMesin,
+                'gelombang_antrean' => $gelombangAntrean,
             ],
             'predicted_duration_hours' => $avgDurasi,
             'confidence_score' => $confidenceScore,

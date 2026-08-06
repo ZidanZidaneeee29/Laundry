@@ -7,6 +7,7 @@ use App\Models\Pelanggan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class PelangganController extends Controller
 {
@@ -17,8 +18,7 @@ class PelangganController extends Controller
         if ($request->filled('search')) {
             $search = $request->search;
             $query->whereHas('user', function($q) use ($search) {
-                $q->where('nama', 'like', "%{$search}%")
-                  ->orWhere('email', 'like', "%{$search}%");
+                $q->where('nama', 'like', "%{$search}%");
             })->orWhere('no_telepon', 'like', "%{$search}%");
         }
 
@@ -30,16 +30,19 @@ class PelangganController extends Controller
     {
         $request->validate([
             'nama' => 'required|string|max:100',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6',
             'no_telepon' => 'required|string|max:15',
             'alamat' => 'required|string|max:255',
         ]);
 
+        $uniq = time() . '_' . rand(100, 999);
+        $email = 'pelanggan_' . $uniq . '@sindory.local';
+        $username = 'pelanggan_' . $uniq;
+
         $user = User::create([
             'nama' => $request->nama,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'username' => $username,
+            'email' => $email,
+            'password' => Hash::make(Str::random(16)),
             'role' => 'pelanggan',
         ]);
 
@@ -58,17 +61,14 @@ class PelangganController extends Controller
 
         $request->validate([
             'nama' => 'required|string|max:100',
-            'email' => 'required|email|unique:users,email,' . $pelanggan->user->id_user . ',id_user',
             'no_telepon' => 'required|string|max:15',
             'alamat' => 'required|string|max:255',
         ]);
 
-        $pelanggan->user->nama = $request->nama;
-        $pelanggan->user->email = $request->email;
-        if ($request->filled('password')) {
-            $pelanggan->user->password = Hash::make($request->password);
+        if ($pelanggan->user) {
+            $pelanggan->user->nama = $request->nama;
+            $pelanggan->user->save();
         }
-        $pelanggan->user->save();
 
         $pelanggan->no_telepon = $request->no_telepon;
         $pelanggan->alamat = $request->alamat;

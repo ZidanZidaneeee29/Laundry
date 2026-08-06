@@ -19,8 +19,8 @@
                     <small class="text-uppercase fw-bold text-white-50">Total Omset Pendapatan</small>
                     <h3 class="fw-bold mb-0 mt-2">Rp {{ number_format($totalPendapatan, 0, ',', '.') }}</h3>
                 </div>
-                <div class="p-3 rounded-circle bg-white bg-opacity-20">
-                    <i class="bi bi-cash-stack fs-2 text-white"></i>
+                <div class="rounded-circle bg-white shadow-sm d-flex align-items-center justify-content-center flex-shrink-0" style="width: 54px; height: 54px;">
+                    <i class="bi bi-cash-stack fs-3" style="color: #0284c7;"></i>
                 </div>
             </div>
         </div>
@@ -33,8 +33,8 @@
                     <small class="text-uppercase fw-bold text-white-50">Total Pesanan</small>
                     <h3 class="fw-bold mb-0 mt-2">{{ $totalTransaksi }} Order</h3>
                 </div>
-                <div class="p-3 rounded-circle bg-white bg-opacity-20">
-                    <i class="bi bi-receipt fs-2 text-white"></i>
+                <div class="rounded-circle bg-white shadow-sm d-flex align-items-center justify-content-center flex-shrink-0" style="width: 54px; height: 54px;">
+                    <i class="bi bi-receipt-cutoff fs-3" style="color: #4338ca;"></i>
                 </div>
             </div>
         </div>
@@ -47,8 +47,8 @@
                     <small class="text-uppercase fw-bold text-white-50">Sedang Diproses (Aktif)</small>
                     <h3 class="fw-bold mb-0 mt-2">{{ $transaksiAktif }} Order</h3>
                 </div>
-                <div class="p-3 rounded-circle bg-white bg-opacity-20">
-                    <i class="bi bi-hourglass-split fs-2 text-white"></i>
+                <div class="rounded-circle bg-white shadow-sm d-flex align-items-center justify-content-center flex-shrink-0" style="width: 54px; height: 54px;">
+                    <i class="bi bi-hourglass-split fs-3" style="color: #d97706;"></i>
                 </div>
             </div>
         </div>
@@ -61,8 +61,8 @@
                     <small class="text-uppercase fw-bold text-white-50">Confidence Score RF</small>
                     <h3 class="fw-bold mb-0 mt-2">{{ $avgConfidencePercent }}%</h3>
                 </div>
-                <div class="p-3 rounded-circle bg-white bg-opacity-20">
-                    <i class="bi bi-cpu fs-2 text-white"></i>
+                <div class="rounded-circle bg-white shadow-sm d-flex align-items-center justify-content-center flex-shrink-0" style="width: 54px; height: 54px;">
+                    <i class="bi bi-cpu-fill fs-3" style="color: #059669;"></i>
                 </div>
             </div>
         </div>

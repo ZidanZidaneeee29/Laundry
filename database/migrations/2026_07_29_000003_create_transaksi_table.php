@@ -16,6 +16,7 @@ return new class extends Migration
             $table->dateTime('tgl_masuk');
             $table->double('total_bayar', 10, 2);
             $table->string('status_pengerjaan', 20)->default('Antre'); // Antre, Cuci, Kering, Setrika, Selesai
+            $table->unsignedTinyInteger('no_mesin_cuci')->nullable();
             $table->dateTime('estimasi_selesai')->nullable();
             $table->timestamps();
 

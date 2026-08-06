@@ -40,25 +40,25 @@ class ExpressLaundryTest extends TestCase
 
     public function test_kasir_can_create_transaction_with_rf_estimation()
     {
-        $kasir = User::where('role', 'kasir')->first();
-        $pelanggan = Pelanggan::first();
+        $kasir = User::where('role', 'karyawan')->first() ?? User::where('role', 'kasir')->first();
         $paket = PaketLayanan::first();
 
         $response = $this->actingAs($kasir)->post(route('kasir.transaksi.store'), [
-            'id_pelanggan' => $pelanggan->id_pelanggan,
+            'nama_pelanggan' => 'Pelanggan Baru Test',
+            'no_telepon' => '089999888777',
+            'alamat' => 'Jl. Test No. 123',
             'id_paket' => $paket->id_paket,
             'berat_qty' => 4.5,
             'kategori_pakaian' => 'Pakaian Harian',
         ]);
 
         $this->assertDatabaseHas('transaksi', [
-            'id_pelanggan' => $pelanggan->id_pelanggan,
             'id_kasir' => $kasir->id_user,
-            'status_pengerjaan' => 'Antre',
+            'status_pengerjaan' => 'Cuci',
         ]);
 
         $this->assertDatabaseHas('prediksi_analisis', [
-            'model_version' => 'RF-Reg-v1.0 (Fallback)',
+            'durasi_estimasi_jam' => 5.34,
         ]);
     }
 

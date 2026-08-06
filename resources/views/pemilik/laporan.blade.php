@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Laporan Transaksi - Pemilik Express Laundry')
+@section('title', 'Laporan Keuangan & Omset - Pemilik Express Laundry')
 
 @section('content')
 <div class="row mb-3 align-items-center d-print-none">
     <div class="col-md-6">
-        <h4 class="fw-bold mb-0"><i class="bi bi-file-earmark-bar-graph text-primary me-2"></i> Laporan Transaksi Cucian</h4>
+        <h4 class="fw-bold mb-0"><i class="bi bi-file-earmark-bar-graph text-primary me-2"></i> Laporan Keuangan, Omset & Laba</h4>
     </div>
     <div class="col-md-6 text-end">
         <button onclick="window.print()" class="btn btn-dark fw-bold">
@@ -36,27 +36,33 @@
     <div class="card-body p-4">
         <!-- Header Print -->
         <div class="text-center border-bottom pb-3 mb-4">
-            <h3 class="fw-bold text-uppercase mb-1">LAPORAN TRANSAKSI EXPRESS LAUNDRY</h3>
+            <h3 class="fw-bold text-uppercase mb-1">LAPORAN OMSET & LABA BERSIH SINDORY LAUNDRY</h3>
             <p class="mb-0 text-muted">Periode: <strong>{{ \Carbon\Carbon::parse($tglMulai)->format('d M Y') }}</strong> s/d <strong>{{ \Carbon\Carbon::parse($tglSelesai)->format('d M Y') }}</strong></p>
         </div>
 
-        <div class="row mb-4 text-center">
-            <div class="col-4">
+        <div class="row mb-4 text-center g-2">
+            <div class="col-md-3">
                 <div class="p-3 bg-light rounded border">
                     <small class="text-muted d-block fw-bold text-uppercase">Total Transaksi</small>
-                    <h4 class="fw-bold text-primary mb-0">{{ $transaksiList->count() }} Order</h4>
+                    <h5 class="fw-bold text-primary mb-0">{{ $transaksiList->count() }} Order ({{ number_format($totalKg, 1, ',', '.') }} KG)</h5>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-md-3">
                 <div class="p-3 bg-light rounded border">
-                    <small class="text-muted d-block fw-bold text-uppercase">Total Berat Cucian</small>
-                    <h4 class="fw-bold text-dark mb-0">{{ number_format($totalKg, 1, ',', '.') }} KG</h4>
+                    <small class="text-muted d-block fw-bold text-uppercase">Total Omset (Kotor)</small>
+                    <h5 class="fw-bold text-info mb-0">Rp {{ number_format($totalOmset, 0, ',', '.') }}</h5>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-md-3">
                 <div class="p-3 bg-light rounded border">
-                    <small class="text-muted d-block fw-bold text-uppercase">Total Omset Pendapatan</small>
-                    <h4 class="fw-bold text-success mb-0">Rp {{ number_format($totalOmset, 0, ',', '.') }}</h4>
+                    <small class="text-muted d-block fw-bold text-uppercase">Beban Operasional (35%)</small>
+                    <h5 class="fw-bold text-danger mb-0">Rp {{ number_format($estimasiBeban, 0, ',', '.') }}</h5>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3 bg-success bg-opacity-10 rounded border border-success">
+                    <small class="text-success d-block fw-bold text-uppercase">Laba Bersih (Net Profit)</small>
+                    <h5 class="fw-bold text-success mb-0">Rp {{ number_format($labaBersih, 0, ',', '.') }}</h5>
                 </div>
             </div>
         </div>
@@ -72,7 +78,7 @@
                         <th>Layanan & Berat</th>
                         <th>Status</th>
                         <th>Kasir</th>
-                        <th class="text-end">Total (Rp)</th>
+                        <th class="text-end">Omset (Rp)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,7 +92,7 @@
                                 {{ $t->detailTransaksi->first()->paketLayanan->nama_paket ?? '-' }}
                                 ({{ $t->detailTransaksi->first()->berat_qty ?? 0 }} KG)
                             </td>
-                            <td><span class="badge bg-secondary">{{ $t->status_pengerjaan }}</span></td>
+                            <td><span class="badge bg-success">{{ $t->status_pengerjaan }}</span></td>
                             <td>{{ $t->kasir->nama ?? '-' }}</td>
                             <td class="text-end fw-bold text-success">Rp {{ number_format($t->total_bayar, 0, ',', '.') }}</td>
                         </tr>
@@ -96,8 +102,16 @@
                 </tbody>
                 <tfoot>
                     <tr class="table-light">
-                        <td colspan="7" class="text-end fw-bold">GRAND TOTAL OMSET:</td>
-                        <td class="text-end fw-bold fs-5 text-success">Rp {{ number_format($totalOmset, 0, ',', '.') }}</td>
+                        <td colspan="7" class="text-end fw-bold">TOTAL OMSET KOTOR:</td>
+                        <td class="text-end fw-bold fs-5 text-info">Rp {{ number_format($totalOmset, 0, ',', '.') }}</td>
+                    </tr>
+                    <tr class="table-light">
+                        <td colspan="7" class="text-end fw-bold">ESTIMASI BEBAN OPERASIONAL (35%):</td>
+                        <td class="text-end fw-bold text-danger">- Rp {{ number_format($estimasiBeban, 0, ',', '.') }}</td>
+                    </tr>
+                    <tr class="table-success">
+                        <td colspan="7" class="text-end fw-bold fs-5 text-success">TOTAL LABA BERSIH (NET PROFIT):</td>
+                        <td class="text-end fw-bold fs-5 text-success">Rp {{ number_format($labaBersih, 0, ',', '.') }}</td>
                     </tr>
                 </tfoot>
             </table>

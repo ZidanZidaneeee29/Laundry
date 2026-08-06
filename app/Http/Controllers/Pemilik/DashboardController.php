@@ -50,8 +50,8 @@ class DashboardController extends Controller
 
     public function laporan(Request $request)
     {
-        $tglMulai = $request->input('tgl_mulai', Carbon::now()->startOfMonth()->format('Y-m-d'));
-        $tglSelesai = $request->input('tgl_selesai', Carbon::now()->endOfMonth()->format('Y-m-d'));
+        $tglMulai = $request->input('tgl_mulai', '2026-05-01');
+        $tglSelesai = $request->input('tgl_selesai', '2026-07-31');
 
         $transaksiList = Transaksi::with(['pelanggan.user', 'kasir', 'detailTransaksi.paketLayanan', 'prediksiAnalisis'])
             ->whereDate('tgl_masuk', '>=', $tglMulai)
@@ -64,6 +64,9 @@ class DashboardController extends Controller
             return $t->detailTransaksi->sum('berat_qty');
         });
 
-        return view('pemilik.laporan', compact('transaksiList', 'tglMulai', 'tglSelesai', 'totalOmset', 'totalKg'));
+        $estimasiBeban = round($totalOmset * 0.35, 2);
+        $labaBersih = round($totalOmset - $estimasiBeban, 2);
+
+        return view('pemilik.laporan', compact('transaksiList', 'tglMulai', 'tglSelesai', 'totalOmset', 'totalKg', 'estimasiBeban', 'labaBersih'));
     }
 }

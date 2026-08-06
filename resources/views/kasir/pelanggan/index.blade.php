@@ -1,16 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Kelola Pelanggan - Kasir Express Laundry')
+@section('title', 'Daftar Pelanggan - SINDORY')
 
 @section('content')
 <div class="row mb-3 align-items-center">
-    <div class="col-md-6">
-        <h4 class="fw-bold mb-0"><i class="bi bi-people text-primary me-2"></i> Kelola Data Pelanggan</h4>
-    </div>
-    <div class="col-md-6 text-md-end mt-2 mt-md-0">
-        <button class="btn btn-primary fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#modalTambahPelanggan">
-            <i class="bi bi-person-plus me-1"></i> Tambah Pelanggan Baru
-        </button>
+    <div class="col-md-12">
+        <h4 class="fw-bold mb-0"><i class="bi bi-people text-primary me-2"></i> Daftar Data Pelanggan</h4>
+        <small class="text-muted">Data pelanggan terisi & diperbarui secara otomatis saat penginputan transaksi pesanan baru.</small>
     </div>
 </div>
 
@@ -18,7 +14,7 @@
     <div class="card-header bg-white py-3">
         <form action="{{ route('kasir.pelanggan.index') }}" method="GET" class="row g-2">
             <div class="col-md-6">
-                <input type="text" name="search" class="form-control" placeholder="Cari Nama / Email / Telepon Pelanggan..." value="{{ request('search') }}">
+                <input type="text" name="search" class="form-control" placeholder="Cari Nama / Telepon Pelanggan..." value="{{ request('search') }}">
             </div>
             <div class="col-md-3">
                 <button type="submit" class="btn btn-secondary w-100 fw-bold"><i class="bi bi-search me-1"></i> Cari</button>
@@ -33,20 +29,18 @@
             <table class="table table-hover align-middle mb-0">
                 <thead class="table-light">
                     <tr>
-                        <th>#ID</th>
+                        <th>NO</th>
                         <th>Nama Pelanggan</th>
-                        <th>Email</th>
-                        <th>No. Telepon</th>
-                        <th>Alamat</th>
+                        <th>No. Telepon / WA</th>
+                        <th>Alamat Lengkap</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($pelangganList as $p)
                         <tr>
-                            <td>#{{ $p->id_pelanggan }}</td>
+                            <td>{{ $loop->iteration + ($pelangganList->currentPage() - 1) * $pelangganList->perPage() }}</td>
                             <td><strong>{{ $p->user->nama ?? '-' }}</strong></td>
-                            <td>{{ $p->user->email ?? '-' }}</td>
                             <td>{{ $p->no_telepon }}</td>
                             <td>{{ $p->alamat }}</td>
                             <td class="text-center">
@@ -59,7 +53,7 @@
                                     <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Hapus</button>
                                 </form>
 
-                                <!-- Modal Edit -->
+                                <!-- Modal Edit Pelanggan -->
                                 <div class="modal fade text-start" id="modalEdit-{{ $p->id_pelanggan }}" tabindex="-1">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -76,20 +70,12 @@
                                                         <input type="text" name="nama" class="form-control" value="{{ $p->user->nama }}" required>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label class="form-label font-semibold">Email</label>
-                                                        <input type="email" name="email" class="form-control" value="{{ $p->user->email }}" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label font-semibold">No. Telepon</label>
+                                                        <label class="form-label font-semibold">No. Telepon / WA</label>
                                                         <input type="text" name="no_telepon" class="form-control" value="{{ $p->no_telepon }}" required>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label class="form-label font-semibold">Alamat</label>
+                                                        <label class="form-label font-semibold">Alamat Lengkap</label>
                                                         <input type="text" name="alamat" class="form-control" value="{{ $p->alamat }}" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label font-semibold">Password Baru (opsional)</label>
-                                                        <input type="password" name="password" class="form-control" placeholder="Kosongkan jika tidak diubah">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -103,54 +89,13 @@
                             </td>
                         </tr>
                     @empty
-                        <tr><td colspan="6" class="text-center py-4 text-muted">Belum ada pelanggan registered.</td></tr>
+                        <tr><td colspan="5" class="text-center py-4 text-muted">Belum ada data pelanggan.</td></tr>
                     @endforelse
                 </tbody>
             </table>
         </div>
         <div class="p-3">
             {{ $pelangganList->links() }}
-        </div>
-    </div>
-</div>
-
-<!-- Modal Tambah -->
-<div class="modal fade" id="modalTambahPelanggan" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="{{ route('kasir.pelanggan.store') }}" method="POST">
-                @csrf
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title fw-bold mb-0">Tambah Pelanggan Baru</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="form-label font-semibold">Nama Lengkap</label>
-                        <input type="text" name="nama" class="form-control" required placeholder="Nama Pelanggan">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label font-semibold">Email</label>
-                        <input type="email" name="email" class="form-control" required placeholder="email@domain.com">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label font-semibold">Password Default</label>
-                        <input type="password" name="password" class="form-control" required value="password123">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label font-semibold">No. Telepon / WA</label>
-                        <input type="text" name="no_telepon" class="form-control" required placeholder="08xxxxxxxxxx">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label font-semibold">Alamat</label>
-                        <input type="text" name="alamat" class="form-control" required placeholder="Alamat rumah">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary fw-bold">Simpan Pelanggan</button>
-                </div>
-            </form>
         </div>
     </div>
 </div>

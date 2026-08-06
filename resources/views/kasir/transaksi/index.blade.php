@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Kelola Transaksi - Kasir Express Laundry')
+@section('title', 'Daftar Transaksi - SINDORY')
 
 @section('content')
 <div class="row mb-3 align-items-center">
@@ -48,13 +48,17 @@
                         <th>Tgl Masuk</th>
                         <th>Layanan</th>
                         <th>Estimasi Selesai (RF)</th>
-                        <th>Status</th>
+                        <th>Slot Mesin Cuci</th>
+                        <th>Status Real-Time</th>
                         <th>Total Bayar</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($transaksi as $t)
+                        @php
+                            $st = $t->status_pengerjaan;
+                        @endphp
                         <tr>
                             <td><strong class="text-primary">{{ $t->no_nota }}</strong></td>
                             <td>
@@ -71,11 +75,29 @@
                                 <small class="text-info font-monospace">RF: {{ $t->prediksiAnalisis->durasi_estimasi_jam ?? 0 }} Jam</small>
                             </td>
                             <td>
+                                @if($st === 'Cuci')
+                                    <span class="badge bg-primary fs-6"><i class="bi bi-water me-1"></i> {{ $t->no_mesin }}</span>
+                                @elseif($st === 'Antre')
+                                    <span class="badge bg-secondary fs-6"><i class="bi bi-clock me-1"></i> Antre Mesin</span>
+                                @elseif(in_array($st, ['Kering', 'Setrika']))
+                                    <span class="badge bg-light text-dark border fs-6"><i class="bi bi-box-arrow-right me-1"></i> Keluar Mesin</span>
+                                @else
+                                    <span class="badge bg-success fs-6"><i class="bi bi-check-all me-1"></i> -</span>
+                                @endif
+                            </td>
+                            <td>
                                 <span class="badge 
-                                    @if($t->status_pengerjaan === 'Selesai') bg-success
-                                    @elseif($t->status_pengerjaan === 'Antre') bg-secondary
-                                    @else bg-primary @endif">
-                                    {{ $t->status_pengerjaan }}
+                                    @if($st === 'Selesai') bg-success
+                                    @elseif($st === 'Setrika') bg-warning text-dark
+                                    @elseif($st === 'Kering') bg-info text-dark
+                                    @elseif($st === 'Cuci') bg-primary
+                                    @else bg-secondary @endif fs-6">
+                                    @if($st === 'Selesai') <i class="bi bi-check-circle-fill me-1"></i>
+                                    @elseif($st === 'Setrika') <i class="bi bi-fire me-1"></i>
+                                    @elseif($st === 'Kering') <i class="bi bi-wind me-1"></i>
+                                    @elseif($st === 'Cuci') <i class="bi bi-water me-1"></i>
+                                    @else <i class="bi bi-clock me-1"></i> @endif
+                                    {{ $st }}
                                 </span>
                             </td>
                             <td><strong class="text-success">Rp {{ number_format($t->total_bayar, 0, ',', '.') }}</strong></td>
@@ -104,11 +126,11 @@
                                                     <div class="mb-3">
                                                         <label class="form-label font-semibold">Status Pengerjaan Saat Ini</label>
                                                         <select name="status_pengerjaan" class="form-select fw-bold" required>
-                                                            <option value="Antre" {{ $t->status_pengerjaan === 'Antre' ? 'selected' : '' }}>1. Antre</option>
-                                                            <option value="Cuci" {{ $t->status_pengerjaan === 'Cuci' ? 'selected' : '' }}>2. Cuci</option>
-                                                            <option value="Kering" {{ $t->status_pengerjaan === 'Kering' ? 'selected' : '' }}>3. Kering</option>
-                                                            <option value="Setrika" {{ $t->status_pengerjaan === 'Setrika' ? 'selected' : '' }}>4. Setrika</option>
-                                                            <option value="Selesai" {{ $t->status_pengerjaan === 'Selesai' ? 'selected' : '' }}>5. Selesai (Siap Diambil)</option>
+                                                            <option value="Antre" {{ $st === 'Antre' ? 'selected' : '' }}>1. Antre</option>
+                                                            <option value="Cuci" {{ $st === 'Cuci' ? 'selected' : '' }}>2. Cuci</option>
+                                                            <option value="Kering" {{ $st === 'Kering' ? 'selected' : '' }}>3. Kering</option>
+                                                            <option value="Setrika" {{ $st === 'Setrika' ? 'selected' : '' }}>4. Setrika</option>
+                                                            <option value="Selesai" {{ $st === 'Selesai' ? 'selected' : '' }}>5. Selesai (Siap Diambil)</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -124,7 +146,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="8" class="text-center py-4 text-muted">Belum ada data transaksi.</td>
+                            <td colspan="9" class="text-center py-4 text-muted">Belum ada data transaksi.</td>
                         </tr>
                     @endforelse
                 </tbody>

@@ -11,7 +11,8 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $query = User::orderBy('created_at', 'desc');
+        // Pengecualian: User dengan role 'pelanggan' tidak dimasukkan di Kelola Pengguna (Staf/User Sistem)
+        $query = User::where('role', '!=', 'pelanggan')->orderBy('created_at', 'desc');
 
         if ($request->filled('search')) {
             $search = $request->search;
@@ -32,7 +33,7 @@ class UserController extends Controller
             'nama' => 'required|string|max:100',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6',
-            'role' => 'required|in:kasir,pelanggan,pemilik',
+            'role' => 'required|in:karyawan,kasir,pemilik',
         ]);
 
         User::create([
@@ -42,7 +43,7 @@ class UserController extends Controller
             'role' => $request->role,
         ]);
 
-        return back()->with('success', 'User berhasil ditambahkan!');
+        return back()->with('success', 'Data pengelola/staf berhasil ditambahkan!');
     }
 
     public function update(Request $request, $id)
@@ -52,7 +53,7 @@ class UserController extends Controller
         $request->validate([
             'nama' => 'required|string|max:100',
             'email' => 'required|email|unique:users,email,' . $user->id_user . ',id_user',
-            'role' => 'required|in:kasir,pelanggan,pemilik',
+            'role' => 'required|in:karyawan,kasir,pemilik',
         ]);
 
         $user->nama = $request->nama;
@@ -65,7 +66,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return back()->with('success', 'User berhasil diperbarui!');
+        return back()->with('success', 'Data pengelola/staf berhasil diperbarui!');
     }
 
     public function destroy($id)

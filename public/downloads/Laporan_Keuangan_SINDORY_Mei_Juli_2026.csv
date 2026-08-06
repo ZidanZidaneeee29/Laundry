@@ -1,0 +1,176 @@
+﻿"LAPORAN KEUANGAN, OMSET & LABA BERSIH SINDORY LAUNDRY"
+Periode:,"01 Mei 2026 s/d 31 Juli 2026"
+
+"=== RINGKASAN REKAPITULASI KEUANGAN ==="
+"Total Transaksi Order","165 Order"
+"Total Volume Cucian","874,4 KG"
+"Total Omset Kotor (Gross Revenue)","Rp 10.975.100"
+"Estimasi Beban Operasional (35%)","Rp 3.841.285"
+"Total Laba Bersih (Net Profit)","Rp 7.133.815"
+
+No.,"No. Nota","Tanggal Masuk","Nama Pelanggan","No. Telepon","Paket Layanan","Berat (KG)",Status,Kasir,"Total Bayar (Rp)"
+1,EXP-20260501-002,"2026-05-01 17:31",Oki,0812000114,"Cuci Komplit",2.9,Selesai,"Karyawan Express",20300
+2,EXP-20260501-018,"2026-05-01 19:41",Mega,0812000112,"Bedcover & Selimut",5.9,Selesai,"Karyawan Express",147500
+3,EXP-20260502-023,"2026-05-02 10:39",Novi,0812000113,"Express 6 Jam",7.4,Selesai,"Karyawan Express",111000
+4,EXP-20260502-005,"2026-05-02 19:18",Indah,0812000108,"Setrika Saja",3.5,Selesai,"Karyawan Express",14000
+5,EXP-20260503-024,"2026-05-03 17:30",Gito,0812000106,"Cuci Komplit",6,Selesai,"Karyawan Express",42000
+6,EXP-20260504-016,"2026-05-04 14:03",Indah,0812000108,"Bedcover & Selimut",3.5,Selesai,"Karyawan Express",87500
+7,EXP-20260504-025,"2026-05-04 18:25",Eka,0812000104,"Express 6 Jam",7.9,Selesai,"Karyawan Express",118500
+8,EXP-20260504-038,"2026-05-04 19:47",Oki,0812000114,"Express 6 Jam",2.9,Selesai,"Karyawan Express",43500
+9,EXP-20260505-027,"2026-05-05 09:31",Chandra,0812000102,"Express 6 Jam",5.1,Selesai,"Karyawan Express",76500
+10,EXP-20260507-030,"2026-05-07 15:22",Budi,0812000101,"Express 6 Jam",5.8,Selesai,"Karyawan Express",87000
+11,EXP-20260507-019,"2026-05-07 15:55",Hendra,0812000107,"Cuci Kering",8,Selesai,"Karyawan Express",40000
+12,EXP-20260508-017,"2026-05-08 11:39",Putri,0812000115,"Cuci Komplit",4.2,Selesai,"Karyawan Express",29400
+13,EXP-20260509-029,"2026-05-09 14:49",Fani,0812000105,"Express 6 Jam",3.9,Selesai,"Karyawan Express",58500
+14,EXP-20260509-008,"2026-05-09 15:29",Umar,0812000119,"Bedcover & Selimut",8.4,Selesai,"Karyawan Express",210000
+15,EXP-20260510-010,"2026-05-10 18:33",Joko,0812000109,"Cuci Komplit",4.9,Selesai,"Karyawan Express",34300
+16,EXP-20260511-022,"2026-05-11 12:12",Gito,0812000106,"Bedcover & Selimut",2.1,Selesai,"Karyawan Express",52500
+17,EXP-20260511-037,"2026-05-11 12:36",Rian,0812000116,"Cuci Komplit",6.9,Selesai,"Karyawan Express",48300
+18,EXP-20260512-036,"2026-05-12 08:51",Novi,0812000113,"Setrika Saja",4.3,Selesai,"Karyawan Express",17200
+19,EXP-20260512-009,"2026-05-12 10:35",Rian,0812000116,"Express 6 Jam",2.8,Selesai,"Karyawan Express",42000
+20,EXP-20260513-021,"2026-05-13 14:10",Joko,0812000109,"Cuci Kering",5.7,Selesai,"Karyawan Express",28500
+21,EXP-20260515-014,"2026-05-15 14:07",Fani,0812000105,"Setrika Saja",8.3,Selesai,"Karyawan Express",33200
+22,EXP-20260516-039,"2026-05-16 14:29",Mega,0812000112,"Setrika Saja",3.4,Selesai,"Karyawan Express",13600
+23,EXP-20260516-040,"2026-05-16 19:50",Oki,0812000114,"Express 6 Jam",3.1,Selesai,"Karyawan Express",46500
+24,EXP-20260516-035,"2026-05-16 19:56",Novi,0812000113,"Express 6 Jam",7.8,Selesai,"Karyawan Express",117000
+25,EXP-20260517-031,"2026-05-17 13:45",Mega,0812000112,"Express 6 Jam",6.2,Selesai,"Karyawan Express",93000
+26,EXP-20260518-034,"2026-05-18 12:44",Indah,0812000108,"Express 6 Jam",3,Selesai,"Karyawan Express",45000
+27,EXP-20260520-006,"2026-05-20 14:06",Kartika,0812000110,"Bedcover & Selimut",2.9,Selesai,"Karyawan Express",72500
+28,EXP-20260520-015,"2026-05-20 14:43",Dewi,0812000103,"Bedcover & Selimut",4.7,Selesai,"Karyawan Express",117500
+29,EXP-20260521-033,"2026-05-21 11:57",Eka,0812000104,"Express 6 Jam",6.9,Selesai,"Karyawan Express",103500
+30,EXP-20260522-028,"2026-05-22 16:32",Gito,0812000106,"Express 6 Jam",6,Selesai,"Karyawan Express",90000
+31,EXP-20260523-001,"2026-05-23 08:20",Ahmad,0812000100,"Express 6 Jam",7.6,Selesai,"Karyawan Express",114000
+32,EXP-20260525-011,"2026-05-25 09:08",Dewi,0812000103,"Cuci Kering",6,Selesai,"Karyawan Express",30000
+33,EXP-20260526-013,"2026-05-26 08:51",Gito,0812000106,"Bedcover & Selimut",5.9,Selesai,"Karyawan Express",147500
+34,EXP-20260527-007,"2026-05-27 09:58",Novi,0812000113,"Bedcover & Selimut",6.5,Selesai,"Karyawan Express",162500
+35,EXP-20260527-042,"2026-05-27 17:53",Novi,0812000113,"Express 6 Jam",4.6,Selesai,"Karyawan Express",69000
+36,EXP-20260529-012,"2026-05-29 12:00",Siti,0812000117,"Express 6 Jam",2.9,Selesai,"Karyawan Express",43500
+37,EXP-20260529-004,"2026-05-29 18:20",Budi,0812000101,"Setrika Saja",7.3,Selesai,"Karyawan Express",29200
+38,EXP-20260530-020,"2026-05-30 13:30",Rian,0812000116,"Setrika Saja",4.6,Selesai,"Karyawan Express",18400
+39,EXP-20260530-032,"2026-05-30 15:07",Oki,0812000114,"Cuci Komplit",5.8,Selesai,"Karyawan Express",40600
+40,EXP-20260531-041,"2026-05-31 14:35",Lina,0812000111,"Express 6 Jam",7.8,Selesai,"Karyawan Express",117000
+41,EXP-20260531-026,"2026-05-31 19:11",Kartika,0812000110,"Cuci Kering",6.1,Selesai,"Karyawan Express",30500
+42,EXP-20260531-003,"2026-05-31 19:31",Siti,0812000117,"Bedcover & Selimut",3.5,Selesai,"Karyawan Express",87500
+43,EXP-20260601-003,"2026-06-01 08:15",Joko,0812000109,"Cuci Komplit",7.2,Selesai,"Karyawan Express",50400
+44,EXP-20260602-037,"2026-06-02 08:22",Dewi,0812000103,"Setrika Saja",4.5,Selesai,"Karyawan Express",18000
+45,EXP-20260602-041,"2026-06-02 13:48",Novi,0812000113,"Bedcover & Selimut",3.8,Selesai,"Karyawan Express",95000
+46,EXP-20260603-030,"2026-06-03 08:35",Rian,0812000116,"Bedcover & Selimut",3.5,Selesai,"Karyawan Express",87500
+47,EXP-20260604-017,"2026-06-04 15:26",Indah,0812000108,"Bedcover & Selimut",7,Selesai,"Karyawan Express",175000
+48,EXP-20260606-005,"2026-06-06 09:59",Rian,0812000116,"Express 6 Jam",7.8,Selesai,"Karyawan Express",117000
+49,EXP-20260606-019,"2026-06-06 10:46",Oki,0812000114,"Express 6 Jam",7.7,Selesai,"Karyawan Express",115500
+50,EXP-20260606-034,"2026-06-06 11:08",Fani,0812000105,"Cuci Kering",6,Selesai,"Karyawan Express",30000
+51,EXP-20260606-016,"2026-06-06 17:02",Dewi,0812000103,"Bedcover & Selimut",7.3,Selesai,"Karyawan Express",182500
+52,EXP-20260607-051,"2026-06-07 09:43",Rian,0812000116,"Cuci Komplit",5.2,Selesai,"Karyawan Express",36400
+53,EXP-20260608-007,"2026-06-08 16:10",Titin,0812000118,"Bedcover & Selimut",5.9,Selesai,"Karyawan Express",147500
+54,EXP-20260609-029,"2026-06-09 13:54",Joko,0812000109,"Express 6 Jam",2.7,Selesai,"Karyawan Express",40500
+55,EXP-20260610-033,"2026-06-10 08:28",Gito,0812000106,"Bedcover & Selimut",3.3,Selesai,"Karyawan Express",82500
+56,EXP-20260611-001,"2026-06-11 10:07",Rian,0812000116,"Setrika Saja",3.4,Selesai,"Karyawan Express",13600
+57,EXP-20260611-008,"2026-06-11 10:12",Titin,0812000118,"Cuci Komplit",7.6,Selesai,"Karyawan Express",53200
+58,EXP-20260611-055,"2026-06-11 18:02",Indah,0812000108,"Bedcover & Selimut",7,Selesai,"Karyawan Express",175000
+59,EXP-20260612-023,"2026-06-12 14:21",Indah,0812000108,"Bedcover & Selimut",3.4,Selesai,"Karyawan Express",85000
+60,EXP-20260612-040,"2026-06-12 15:06",Putri,0812000115,"Cuci Komplit",7.9,Selesai,"Karyawan Express",55300
+61,EXP-20260612-047,"2026-06-12 15:11",Novi,0812000113,"Bedcover & Selimut",5.1,Selesai,"Karyawan Express",127500
+62,EXP-20260612-044,"2026-06-12 17:39",Novi,0812000113,"Cuci Komplit",3.2,Selesai,"Karyawan Express",22400
+63,EXP-20260612-006,"2026-06-12 19:52",Lina,0812000111,"Cuci Kering",5.7,Selesai,"Karyawan Express",28500
+64,EXP-20260613-027,"2026-06-13 09:47",Ahmad,0812000100,"Cuci Kering",4.3,Selesai,"Karyawan Express",21500
+65,EXP-20260613-025,"2026-06-13 17:14",Putri,0812000115,"Bedcover & Selimut",4.5,Selesai,"Karyawan Express",112500
+66,EXP-20260614-011,"2026-06-14 08:33",Mega,0812000112,"Express 6 Jam",6.4,Selesai,"Karyawan Express",96000
+67,EXP-20260614-057,"2026-06-14 19:22",Chandra,0812000102,"Express 6 Jam",6.7,Selesai,"Karyawan Express",100500
+68,EXP-20260615-021,"2026-06-15 16:30",Umar,0812000119,"Express 6 Jam",6.9,Selesai,"Karyawan Express",103500
+69,EXP-20260616-002,"2026-06-16 19:28",Rian,0812000116,"Cuci Komplit",4.2,Selesai,"Karyawan Express",29400
+70,EXP-20260617-015,"2026-06-17 10:28",Hendra,0812000107,"Cuci Kering",4.7,Selesai,"Karyawan Express",23500
+71,EXP-20260617-056,"2026-06-17 11:21",Indah,0812000108,"Bedcover & Selimut",5.1,Selesai,"Karyawan Express",127500
+72,EXP-20260617-035,"2026-06-17 17:37",Dewi,0812000103,"Cuci Kering",7.6,Selesai,"Karyawan Express",38000
+73,EXP-20260617-032,"2026-06-17 19:42",Budi,0812000101,"Bedcover & Selimut",2.6,Selesai,"Karyawan Express",65000
+74,EXP-20260617-013,"2026-06-17 19:46",Fani,0812000105,"Express 6 Jam",7.6,Selesai,"Karyawan Express",114000
+75,EXP-20260618-053,"2026-06-18 08:43",Kartika,0812000110,"Bedcover & Selimut",2,Selesai,"Karyawan Express",50000
+76,EXP-20260618-009,"2026-06-18 11:04",Putri,0812000115,"Bedcover & Selimut",5.7,Selesai,"Karyawan Express",142500
+77,EXP-20260618-043,"2026-06-18 12:38",Novi,0812000113,"Cuci Kering",4.5,Selesai,"Karyawan Express",22500
+78,EXP-20260618-052,"2026-06-18 18:15",Lina,0812000111,"Express 6 Jam",3.4,Selesai,"Karyawan Express",51000
+79,EXP-20260620-014,"2026-06-20 12:30",Chandra,0812000102,"Bedcover & Selimut",4.5,Selesai,"Karyawan Express",112500
+80,EXP-20260620-049,"2026-06-20 17:55",Rian,0812000116,"Setrika Saja",7.5,Selesai,"Karyawan Express",30000
+81,EXP-20260621-004,"2026-06-21 08:55",Lina,0812000111,"Setrika Saja",7,Selesai,"Karyawan Express",28000
+82,EXP-20260621-045,"2026-06-21 10:38",Hendra,0812000107,"Bedcover & Selimut",5.9,Selesai,"Karyawan Express",147500
+83,EXP-20260621-028,"2026-06-21 17:26",Siti,0812000117,"Express 6 Jam",2.7,Selesai,"Karyawan Express",40500
+84,EXP-20260621-042,"2026-06-21 19:20",Putri,0812000115,"Setrika Saja",4.5,Selesai,"Karyawan Express",18000
+85,EXP-20260623-046,"2026-06-23 19:12",Umar,0812000119,"Bedcover & Selimut",5.3,Selesai,"Karyawan Express",132500
+86,EXP-20260625-026,"2026-06-25 13:16",Eka,0812000104,"Bedcover & Selimut",8.4,Selesai,"Karyawan Express",210000
+87,EXP-20260625-050,"2026-06-25 17:49",Hendra,0812000107,"Bedcover & Selimut",7.2,Selesai,"Karyawan Express",180000
+88,EXP-20260625-039,"2026-06-25 18:47",Rian,0812000116,"Express 6 Jam",4.5,Selesai,"Karyawan Express",67500
+89,EXP-20260626-024,"2026-06-26 18:45",Gito,0812000106,"Bedcover & Selimut",7.7,Selesai,"Karyawan Express",192500
+90,EXP-20260626-010,"2026-06-26 19:35",Novi,0812000113,"Cuci Kering",5.4,Selesai,"Karyawan Express",27000
+91,EXP-20260627-022,"2026-06-27 11:41",Lina,0812000111,"Cuci Kering",2.8,Selesai,"Karyawan Express",14000
+92,EXP-20260627-036,"2026-06-27 18:09",Putri,0812000115,"Cuci Kering",3.9,Selesai,"Karyawan Express",19500
+93,EXP-20260628-054,"2026-06-28 11:53",Hendra,0812000107,"Setrika Saja",5.8,Selesai,"Karyawan Express",23200
+94,EXP-20260628-031,"2026-06-28 17:22",Gito,0812000106,"Bedcover & Selimut",6.9,Selesai,"Karyawan Express",172500
+95,EXP-20260629-012,"2026-06-29 16:11",Oki,0812000114,"Cuci Komplit",2.8,Selesai,"Karyawan Express",19600
+96,EXP-20260629-020,"2026-06-29 17:29",Chandra,0812000102,"Express 6 Jam",3.9,Selesai,"Karyawan Express",58500
+97,EXP-20260629-058,"2026-06-29 17:47",Hendra,0812000107,"Cuci Kering",3.9,Selesai,"Karyawan Express",19500
+98,EXP-20260629-038,"2026-06-29 18:47",Siti,0812000117,"Express 6 Jam",2.1,Selesai,"Karyawan Express",31500
+99,EXP-20260629-048,"2026-06-29 19:34",Siti,0812000117,"Express 6 Jam",7.4,Selesai,"Karyawan Express",111000
+100,EXP-20260630-018,"2026-06-30 15:34",Dewi,0812000103,"Cuci Komplit",6.5,Selesai,"Karyawan Express",45500
+101,EXP-20260701-054,"2026-07-01 10:48",Titin,0812000118,"Setrika Saja",2.8,Selesai,"Karyawan Express",11200
+102,EXP-20260701-020,"2026-07-01 17:19",Titin,0812000118,"Setrika Saja",6,Selesai,"Karyawan Express",24000
+103,EXP-20260701-032,"2026-07-01 19:06",Eka,0812000104,"Cuci Kering",2.2,Selesai,"Karyawan Express",11000
+104,EXP-20260701-012,"2026-07-01 19:12",Fani,0812000105,"Express 6 Jam",7.3,Selesai,"Karyawan Express",109500
+105,EXP-20260702-023,"2026-07-02 14:36",Titin,0812000118,"Setrika Saja",8.5,Selesai,"Karyawan Express",34000
+106,EXP-20260702-044,"2026-07-02 17:16",Mega,0812000112,"Cuci Kering",3.6,Selesai,"Karyawan Express",18000
+107,EXP-20260703-002,"2026-07-03 09:43",Lina,0812000111,"Express 6 Jam",2.4,Selesai,"Karyawan Express",36000
+108,EXP-20260703-050,"2026-07-03 15:10",Eka,0812000104,"Express 6 Jam",4.9,Selesai,"Karyawan Express",73500
+109,EXP-20260705-051,"2026-07-05 12:32",Fani,0812000105,"Bedcover & Selimut",5.7,Selesai,"Karyawan Express",142500
+110,EXP-20260705-062,"2026-07-05 16:22",Joko,0812000109,"Bedcover & Selimut",5.7,Selesai,"Karyawan Express",142500
+111,EXP-20260705-025,"2026-07-05 17:12",Oki,0812000114,"Cuci Komplit",8.4,Selesai,"Karyawan Express",58800
+112,EXP-20260705-049,"2026-07-05 18:43",Hendra,0812000107,"Express 6 Jam",5.7,Selesai,"Karyawan Express",85500
+113,EXP-20260707-045,"2026-07-07 10:01",Chandra,0812000102,"Cuci Kering",4.3,Selesai,"Karyawan Express",21500
+114,EXP-20260707-006,"2026-07-07 19:46",Putri,0812000115,"Bedcover & Selimut",5.7,Selesai,"Karyawan Express",142500
+115,EXP-20260708-009,"2026-07-08 09:37",Ahmad,0812000100,"Cuci Kering",5.9,Selesai,"Karyawan Express",29500
+116,EXP-20260708-011,"2026-07-08 10:48",Hendra,0812000107,"Bedcover & Selimut",4,Selesai,"Karyawan Express",100000
+117,EXP-20260708-065,"2026-07-08 10:49",Indah,0812000108,"Cuci Kering",7.6,Selesai,"Karyawan Express",38000
+118,EXP-20260708-021,"2026-07-08 13:45",Ahmad,0812000100,"Cuci Kering",5.7,Selesai,"Karyawan Express",28500
+119,EXP-20260708-029,"2026-07-08 14:06",Indah,0812000108,"Setrika Saja",6.8,Selesai,"Karyawan Express",27200
+120,EXP-20260708-027,"2026-07-08 14:08",Rian,0812000116,"Setrika Saja",4.2,Selesai,"Karyawan Express",16800
+121,EXP-20260708-010,"2026-07-08 18:24",Dewi,0812000103,"Setrika Saja",5.9,Selesai,"Karyawan Express",23600
+122,EXP-20260709-007,"2026-07-09 12:32",Oki,0812000114,"Bedcover & Selimut",2.3,Selesai,"Karyawan Express",57500
+123,EXP-20260709-052,"2026-07-09 15:23",Oki,0812000114,"Cuci Kering",8.2,Selesai,"Karyawan Express",41000
+124,EXP-20260709-061,"2026-07-09 15:38",Gito,0812000106,"Express 6 Jam",7.3,Selesai,"Karyawan Express",109500
+125,EXP-20260709-037,"2026-07-09 19:50",Novi,0812000113,"Cuci Komplit",4.1,Selesai,"Karyawan Express",28700
+126,EXP-20260710-035,"2026-07-10 09:24",Gito,0812000106,"Cuci Komplit",7.7,Selesai,"Karyawan Express",53900
+127,EXP-20260711-038,"2026-07-11 09:27",Oki,0812000114,"Cuci Kering",7.8,Selesai,"Karyawan Express",39000
+128,EXP-20260711-046,"2026-07-11 10:18",Umar,0812000119,"Cuci Kering",3.8,Selesai,"Karyawan Express",19000
+129,EXP-20260711-001,"2026-07-11 10:54",Umar,0812000119,"Express 6 Jam",5,Selesai,"Karyawan Express",75000
+130,EXP-20260711-018,"2026-07-11 19:57",Novi,0812000113,"Setrika Saja",2.9,Selesai,"Karyawan Express",11600
+131,EXP-20260713-016,"2026-07-13 09:12",Oki,0812000114,"Cuci Komplit",5.8,Selesai,"Karyawan Express",40600
+132,EXP-20260713-024,"2026-07-13 13:13",Titin,0812000118,"Express 6 Jam",5.6,Selesai,"Karyawan Express",84000
+133,EXP-20260714-022,"2026-07-14 08:03",Indah,0812000108,"Express 6 Jam",2.1,Selesai,"Karyawan Express",31500
+134,EXP-20260714-040,"2026-07-14 10:48",Dewi,0812000103,"Cuci Komplit",4.5,Selesai,"Karyawan Express",31500
+135,EXP-20260715-048,"2026-07-15 15:16",Budi,0812000101,"Cuci Komplit",8.4,Selesai,"Karyawan Express",58800
+136,EXP-20260716-056,"2026-07-16 08:42",Rian,0812000116,"Cuci Komplit",2.2,Selesai,"Karyawan Express",15400
+137,EXP-20260716-058,"2026-07-16 09:55",Umar,0812000119,"Setrika Saja",6.6,Selesai,"Karyawan Express",26400
+138,EXP-20260717-033,"2026-07-17 12:19",Rian,0812000116,"Cuci Komplit",4.7,Selesai,"Karyawan Express",32900
+139,EXP-20260718-004,"2026-07-18 08:20",Umar,0812000119,"Setrika Saja",7,Selesai,"Karyawan Express",28000
+140,EXP-20260718-055,"2026-07-18 14:04",Ahmad,0812000100,"Setrika Saja",7.3,Selesai,"Karyawan Express",29200
+141,EXP-20260718-008,"2026-07-18 16:07",Gito,0812000106,"Cuci Komplit",6.2,Selesai,"Karyawan Express",43400
+142,EXP-20260719-003,"2026-07-19 15:29",Ahmad,0812000100,"Cuci Kering",7.5,Selesai,"Karyawan Express",37500
+143,EXP-20260720-042,"2026-07-20 19:50",Fani,0812000105,"Cuci Komplit",7.3,Selesai,"Karyawan Express",51100
+144,EXP-20260721-030,"2026-07-21 14:08",Lina,0812000111,"Setrika Saja",8.2,Selesai,"Karyawan Express",32800
+145,EXP-20260722-060,"2026-07-22 08:57",Mega,0812000112,"Bedcover & Selimut",7.8,Selesai,"Karyawan Express",195000
+146,EXP-20260722-041,"2026-07-22 10:17",Budi,0812000101,"Setrika Saja",5.9,Selesai,"Karyawan Express",23600
+147,EXP-20260724-064,"2026-07-24 11:04",Rian,0812000116,"Cuci Komplit",2.3,Selesai,"Karyawan Express",16100
+148,EXP-20260724-026,"2026-07-24 19:47",Budi,0812000101,"Setrika Saja",8.2,Selesai,"Karyawan Express",32800
+149,EXP-20260725-063,"2026-07-25 09:21",Putri,0812000115,"Bedcover & Selimut",3.4,Selesai,"Karyawan Express",85000
+150,EXP-20260725-019,"2026-07-25 13:49",Rian,0812000116,"Bedcover & Selimut",6.6,Selesai,"Karyawan Express",165000
+151,EXP-20260725-059,"2026-07-25 17:08",Chandra,0812000102,"Setrika Saja",2.3,Selesai,"Karyawan Express",9200
+152,EXP-20260726-015,"2026-07-26 10:31",Joko,0812000109,"Bedcover & Selimut",4.4,Selesai,"Karyawan Express",110000
+153,EXP-20260726-034,"2026-07-26 18:14",Ahmad,0812000100,"Express 6 Jam",5.6,Selesai,"Karyawan Express",84000
+154,EXP-20260727-053,"2026-07-27 08:26",Novi,0812000113,"Setrika Saja",3.2,Selesai,"Karyawan Express",12800
+155,EXP-20260727-043,"2026-07-27 17:36",Gito,0812000106,"Cuci Kering",2,Selesai,"Karyawan Express",10000
+156,EXP-20260728-005,"2026-07-28 13:52",Joko,0812000109,"Express 6 Jam",5.2,Selesai,"Karyawan Express",78000
+157,EXP-20260728-036,"2026-07-28 14:05",Siti,0812000117,"Bedcover & Selimut",5.5,Selesai,"Karyawan Express",137500
+158,EXP-20260729-017,"2026-07-29 12:13",Indah,0812000108,"Cuci Komplit",3,Selesai,"Karyawan Express",21000
+159,EXP-20260729-028,"2026-07-29 15:25",Budi,0812000101,"Cuci Kering",6.4,Selesai,"Karyawan Express",32000
+160,EXP-20260729-014,"2026-07-29 17:57",Titin,0812000118,"Cuci Kering",2.8,Selesai,"Karyawan Express",14000
+161,EXP-20260730-057,"2026-07-30 15:42",Rian,0812000116,"Cuci Komplit",5.4,Selesai,"Karyawan Express",37800
+162,EXP-20260730-031,"2026-07-30 18:41",Hendra,0812000107,"Cuci Komplit",2.2,Selesai,"Karyawan Express",15400
+163,EXP-20260731-039,"2026-07-31 09:55",Siti,0812000117,"Express 6 Jam",6.8,Selesai,"Karyawan Express",102000
+164,EXP-20260731-047,"2026-07-31 10:57",Rian,0812000116,"Express 6 Jam",4,Selesai,"Karyawan Express",60000
+165,EXP-20260731-013,"2026-07-31 12:42",Mega,0812000112,"Bedcover & Selimut",4.6,Selesai,"Karyawan Express",115000

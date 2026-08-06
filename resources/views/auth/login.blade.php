@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Login - SINDORY')
+@section('title', 'Login Staf Operasional - SINDORY')
 
 @section('content')
 <div class="row justify-content-center mt-4">
@@ -9,7 +9,7 @@
             <div class="card-header bg-white text-center py-3 border-bottom">
                 <img src="{{ asset('images/logo.png') }}" alt="SINDORY Logo" height="70" class="mb-2">
                 <h3 class="mb-0 fw-bold text-dark">SINDORY</h3>
-                <small class="text-muted">Sistem Informasi Indo Express Laundry (75 Menit Selesai)</small>
+                <small class="text-muted">Login Staf Operasional (Karyawan / Pemilik)</small>
             </div>
             <div class="card-body p-4">
                 <form method="POST" action="{{ route('login') }}">
@@ -44,8 +44,10 @@
                 </form>
 
                 <div class="text-center mt-3 pt-3 border-top">
-                    <p class="text-muted small mb-1">Belum memiliki akun Pelanggan?</p>
-                    <a href="{{ route('register') }}" class="text-decoration-none fw-bold">Daftar Akun Pelanggan Baru</a>
+                    <p class="text-muted small mb-1"><i class="bi bi-info-circle text-info me-1"></i> Pelanggan tidak perlu login / membuat akun.</p>
+                    <a href="{{ route('monitoring') }}" class="text-decoration-none fw-bold text-primary">
+                        <i class="bi bi-search me-1"></i> Lacak Status Cucian Tanpa Login
+                    </a>
                 </div>
             </div>
         </div>

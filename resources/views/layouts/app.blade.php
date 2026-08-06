@@ -58,94 +58,71 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .sidebar-brand a {
-            color: #fff;
-            font-weight: 800;
-            font-size: 1.15rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            letter-spacing: -0.5px;
-        }
-
         .sidebar-menu {
-            padding: 1.25rem 0.85rem;
+            padding: 1.25rem 0.75rem;
             flex: 1;
             overflow-y: auto;
         }
 
         .menu-header {
-            font-size: 0.72rem;
-            font-weight: 700;
+            font-size: 0.68rem;
             text-transform: uppercase;
             letter-spacing: 1.2px;
-            color: #64748b;
-            padding: 0.75rem 0.85rem 0.35rem;
+            font-weight: 700;
+            color: #475569;
+            padding: 0.75rem 0.75rem 0.35rem 0.75rem;
             margin-top: 0.5rem;
         }
 
         .nav-link-custom {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 0.7rem 0.9rem;
+            gap: 0.75rem;
+            padding: 0.65rem 0.85rem;
             color: #94a3b8;
-            border-radius: 8px;
             text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.88rem;
             font-weight: 500;
-            font-size: 0.9rem;
             transition: all 0.2s ease;
             margin-bottom: 2px;
         }
 
-        .nav-link-custom i {
-            font-size: 1.15rem;
-            transition: transform 0.2s ease;
-        }
-
         .nav-link-custom:hover {
-            color: #f8fafc;
+            color: #ffffff;
             background-color: var(--sidebar-hover);
-        }
-
-        .nav-link-custom:hover i {
-            transform: translateX(3px);
-            color: var(--sidebar-accent);
         }
 
         .nav-link-custom.active {
             color: #ffffff;
-            background: linear-gradient(135deg, #0284c7, #0369a1);
+            background-color: #0284c7;
             font-weight: 600;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
         }
 
-        .nav-link-custom.active i {
-            color: #ffffff;
+        .nav-link-custom i {
+            font-size: 1.1rem;
         }
 
+        /* User Profile in Sidebar */
         .sidebar-user {
-            padding: 1rem;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.03);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(0, 0, 0, 0.15);
         }
 
         .user-card {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 0.5rem;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.04);
+            gap: 0.75rem;
         }
 
         .avatar-circle {
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #38bdf8, #818cf8);
-            color: #fff;
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -163,7 +140,7 @@
         }
 
         #content-wrapper.expanded {
-            margin-left: 0;
+            margin-left: 0 !important;
         }
 
         /* Topbar */
@@ -284,7 +261,7 @@
                 margin-left: 0;
             }
             #content-wrapper {
-                margin-left: 0;
+                margin-left: 0 !important;
             }
         }
     </style>
@@ -294,13 +271,15 @@
 
     @php
         $isAuthPage = request()->routeIs('login') || request()->routeIs('register');
+        // Sembunyikan sidebar pada halaman Auth (Login/Register) dan Tamu/Pelanggan (Belum Login)
+        $hideSidebar = $isAuthPage || !auth()->check();
     @endphp
 
-    @if(!$isAuthPage)
-        <!-- Sidebar Navigation (Sembunyi di Halaman Login & Register) -->
+    @if(!$hideSidebar)
+        <!-- Sidebar Navigation (Hanya tampil untuk Staf Karyawan / Pemilik yang sudah login) -->
         <aside id="sidebar">
             <div class="sidebar-brand">
-                <a href="{{ route('monitoring') }}" class="d-flex align-items-center gap-2">
+                <a href="{{ route('monitoring') }}" class="d-flex align-items-center gap-2 text-decoration-none">
                     <img src="{{ asset('images/logo.png') }}" alt="SINDORY Logo" height="38" class="rounded border bg-white p-1">
                     <div>
                         <span class="fw-extrabold text-white fs-5 d-block leading-none">SINDORY</span>
@@ -317,15 +296,8 @@
                 </a>
 
                 @auth
-                    @if(auth()->user()->role === 'pelanggan')
-                        <a href="{{ route('pelanggan.riwayat') }}" class="nav-link-custom {{ request()->routeIs('pelanggan.riwayat') ? 'active' : '' }}">
-                            <i class="bi bi-clock-history"></i>
-                            <span>Riwayat Pesanan</span>
-                        </a>
-                    @endif
-
-                    @if(auth()->user()->role === 'kasir')
-                        <div class="menu-header">Operasional Kasir</div>
+                    @if(auth()->user()->role === 'kasir' || auth()->user()->role === 'karyawan')
+                        <div class="menu-header">Operasional Karyawan</div>
                         <a href="{{ route('kasir.transaksi.index') }}" class="nav-link-custom {{ request()->routeIs('kasir.transaksi.index') || request()->routeIs('kasir.transaksi.show') ? 'active' : '' }}">
                             <i class="bi bi-receipt"></i>
                             <span>Daftar Transaksi</span>
@@ -336,11 +308,11 @@
                         </a>
                         <a href="{{ route('kasir.pelanggan.index') }}" class="nav-link-custom {{ request()->routeIs('kasir.pelanggan.*') ? 'active' : '' }}">
                             <i class="bi bi-people"></i>
-                            <span>Kelola Pelanggan</span>
+                            <span>Daftar Pelanggan</span>
                         </a>
                         <a href="{{ route('kasir.user.index') }}" class="nav-link-custom {{ request()->routeIs('kasir.user.*') ? 'active' : '' }}">
                             <i class="bi bi-person-gear"></i>
-                            <span>Kelola User System</span>
+                            <span>Kelola Pengguna</span>
                         </a>
                     @endif
 
@@ -362,68 +334,68 @@
                 @endauth
             </div>
 
-            @auth
-                <div class="sidebar-user">
-                    <div class="user-card mb-2">
-                        <div class="avatar-circle">
-                            {{ strtoupper(substr(auth()->user()->nama, 0, 1)) }}
-                        </div>
-                        <div class="overflow-hidden">
-                            <div class="text-white font-semibold text-truncate small" style="max-width: 140px;">
-                                {{ auth()->user()->nama }}
-                            </div>
-                            <span class="badge bg-info text-dark extra-small" style="font-size: 0.68rem;">
-                                {{ strtoupper(auth()->user()->role) }}
-                            </span>
-                        </div>
+            <div class="sidebar-user">
+                <div class="user-card mb-2">
+                    <div class="avatar-circle">
+                        {{ strtoupper(substr(auth()->user()->nama, 0, 1)) }}
                     </div>
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-outline-danger btn-sm w-100 fw-semibold">
-                            <i class="bi bi-box-arrow-right me-1"></i> Logout
-                        </button>
-                    </form>
+                    <div class="overflow-hidden">
+                        <div class="text-white font-semibold text-truncate small" style="max-width: 140px;">
+                            {{ auth()->user()->nama }}
+                        </div>
+                        <span class="badge bg-info text-dark extra-small" style="font-size: 0.68rem;">
+                            {{ strtoupper(auth()->user()->role) }}
+                        </span>
+                    </div>
                 </div>
-            @else
-                <div class="sidebar-user">
-                    <a href="{{ route('login') }}" class="btn btn-primary btn-sm w-100 mb-2 fw-semibold">
-                        <i class="bi bi-box-arrow-in-right me-1"></i> Login Sistem
-                    </a>
-                    <a href="{{ route('register') }}" class="btn btn-outline-light btn-sm w-100 fw-semibold">
-                        Daftar Pelanggan
-                    </a>
-                </div>
-            @endauth
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-danger btn-sm w-100 fw-semibold">
+                        <i class="bi bi-box-arrow-right me-1"></i> Logout
+                    </button>
+                </form>
+            </div>
         </aside>
     @endif
 
     <!-- Content Wrapper -->
-    <div id="content-wrapper" class="{{ $isAuthPage ? 'expanded' : '' }}">
+    <div id="content-wrapper" class="{{ $hideSidebar ? 'expanded' : '' }}">
         <!-- Topbar Header -->
         <header class="topbar">
             <div class="d-flex align-items-center gap-3">
-                @if(!$isAuthPage)
+                @if(!$hideSidebar)
                     <button class="toggle-btn" id="sidebarToggle" title="Toggle Sidebar">
                         <i class="bi bi-list fs-5"></i>
                     </button>
                 @else
                     <a href="{{ route('monitoring') }}" class="d-flex align-items-center gap-2 text-decoration-none">
-                        <img src="{{ asset('images/logo.png') }}" alt="SINDORY Logo" height="36" class="rounded border p-1">
+                        <img src="{{ asset('images/logo.png') }}" alt="SINDORY Logo" height="38" class="rounded border p-1 bg-white">
                         <div>
                             <span class="fw-bold text-dark fs-5 leading-none d-block">SINDORY</span>
                             <small class="text-muted extra-small d-block" style="font-size: 0.65rem;">Indo Express Laundry</small>
                         </div>
                     </a>
                 @endif
-                <div class="d-none d-md-flex align-items-center text-muted small fw-semibold">
+                <div class="d-none d-md-flex align-items-center text-muted small fw-semibold border-start ps-3 ms-2">
                     <i class="bi bi-calendar3 me-2"></i> {{ date('l, d F Y') }}
                 </div>
             </div>
 
+            <!-- Bagian Kanan Navbar & Kata Selamat Datang -->
             <div class="d-flex align-items-center gap-3">
-                <a href="{{ route('monitoring') }}" class="btn btn-sm btn-light border text-secondary">
-                    <i class="bi bi-search me-1"></i> Lacak Nota
-                </a>
+                <!-- Banner Kata Selamat Datang -->
+                <div class="d-none d-sm-block">
+                    @auth
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill fw-semibold">
+                            <i class="bi bi-hand-wave text-warning me-1"></i> Selamat Datang, <strong>{{ auth()->user()->nama }}</strong> ({{ ucfirst(auth()->user()->role) }})
+                        </span>
+                    @else
+                        <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill fw-semibold">
+                            <i class="bi bi-emoji-smile text-warning me-1"></i> Selamat Datang di <strong>SINDORY Laundry</strong>
+                        </span>
+                    @endauth
+                </div>
+
                 @auth
                     <div class="dropdown">
                         <button class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
@@ -446,7 +418,7 @@
                 @else
                     @if(!$isAuthPage)
                         <a href="{{ route('login') }}" class="btn btn-sm btn-primary fw-semibold">
-                            <i class="bi bi-box-arrow-in-right me-1"></i> Login
+                            <i class="bi bi-box-arrow-in-right me-1"></i> Login Staf
                         </a>
                     @endif
                 @endauth
@@ -484,17 +456,13 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const sidebar = document.getElementById('sidebar');
-            const contentWrapper = document.getElementById('content-wrapper');
+            const content = document.getElementById('content-wrapper');
             const toggleBtn = document.getElementById('sidebarToggle');
 
-            if (toggleBtn && sidebar && contentWrapper) {
+            if (toggleBtn && sidebar && content) {
                 toggleBtn.addEventListener('click', function() {
-                    if (window.innerWidth < 992) {
-                        sidebar.classList.toggle('active');
-                    } else {
-                        sidebar.classList.toggle('collapsed');
-                        contentWrapper.classList.toggle('expanded');
-                    }
+                    sidebar.classList.toggle('collapsed');
+                    content.classList.toggle('expanded');
                 });
             }
         });

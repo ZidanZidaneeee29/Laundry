@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Kelola User - Kasir Express Laundry')
+@section('title', 'Kelola Pengguna - SINDORY')
 
 @section('content')
 <div class="row mb-3 align-items-center">
     <div class="col-md-6">
-        <h4 class="fw-bold mb-0"><i class="bi bi-person-gear text-primary me-2"></i> Kelola Data User Sistem</h4>
+        <h4 class="fw-bold mb-0"><i class="bi bi-person-gear text-primary me-2"></i> Kelola Data Pengguna</h4>
+        <small class="text-muted">Kelola akun staf pengelola sistem (Karyawan, Kasir, Pemilik).</small>
     </div>
     <div class="col-md-6 text-md-end mt-2 mt-md-0">
         <button class="btn btn-primary fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#modalTambahUser">
-            <i class="bi bi-plus-lg me-1"></i> Tambah User Baru
+            <i class="bi bi-plus-lg me-1"></i> Tambah Pengguna Baru
         </button>
     </div>
 </div>
@@ -33,7 +34,7 @@
             <table class="table table-hover align-middle mb-0">
                 <thead class="table-light">
                     <tr>
-                        <th>#ID User</th>
+                        <th>NO</th>
                         <th>Nama Lengkap</th>
                         <th>Email</th>
                         <th>Role Hak Akses</th>
@@ -44,7 +45,7 @@
                 <tbody>
                     @forelse($users as $u)
                         <tr>
-                            <td>#{{ $u->id_user }}</td>
+                            <td>{{ $loop->iteration + ($users->currentPage() - 1) * $users->perPage() }}</td>
                             <td><strong>{{ $u->nama }}</strong></td>
                             <td>{{ $u->email }}</td>
                             <td>
@@ -61,7 +62,7 @@
                                     <i class="bi bi-pencil"></i> Edit
                                 </button>
                                 @if($u->id_user !== auth()->id())
-                                    <form action="{{ route('kasir.user.destroy', $u->id_user) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus user ini?')">
+                                    <form action="{{ route('kasir.user.destroy', $u->id_user) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus pengguna ini?')">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Hapus</button>
@@ -76,7 +77,7 @@
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="modal-header bg-warning">
-                                                    <h5 class="modal-title fw-bold mb-0">Edit User: {{ $u->nama }}</h5>
+                                                    <h5 class="modal-title fw-bold mb-0">Edit Pengguna: {{ $u->nama }}</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                 </div>
                                                 <div class="modal-body">
@@ -91,8 +92,8 @@
                                                     <div class="mb-3">
                                                         <label class="form-label font-semibold">Role Hak Akses</label>
                                                         <select name="role" class="form-select" required>
+                                                            <option value="karyawan" {{ $u->role === 'karyawan' ? 'selected' : '' }}>Karyawan</option>
                                                             <option value="kasir" {{ $u->role === 'kasir' ? 'selected' : '' }}>Kasir</option>
-                                                            <option value="pelanggan" {{ $u->role === 'pelanggan' ? 'selected' : '' }}>Pelanggan</option>
                                                             <option value="pemilik" {{ $u->role === 'pemilik' ? 'selected' : '' }}>Pemilik</option>
                                                         </select>
                                                     </div>
@@ -112,7 +113,7 @@
                             </td>
                         </tr>
                     @empty
-                        <tr><td colspan="6" class="text-center py-4 text-muted">Belum ada user.</td></tr>
+                        <tr><td colspan="6" class="text-center py-4 text-muted">Belum ada data pengguna pengelola.</td></tr>
                     @endforelse
                 </tbody>
             </table>
@@ -130,13 +131,13 @@
             <form action="{{ route('kasir.user.store') }}" method="POST">
                 @csrf
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title fw-bold mb-0">Tambah User Sistem Baru</h5>
+                    <h5 class="modal-title fw-bold mb-0">Tambah Pengguna Baru</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label font-semibold">Nama Lengkap</label>
-                        <input type="text" name="nama" class="form-control" required placeholder="Nama User">
+                        <input type="text" name="nama" class="form-control" required placeholder="Nama Pengguna">
                     </div>
                     <div class="mb-3">
                         <label class="form-label font-semibold">Email</label>
@@ -145,8 +146,8 @@
                     <div class="mb-3">
                         <label class="form-label font-semibold">Role Hak Akses</label>
                         <select name="role" class="form-select" required>
+                            <option value="karyawan">Karyawan</option>
                             <option value="kasir">Kasir</option>
-                            <option value="pelanggan">Pelanggan</option>
                             <option value="pemilik">Pemilik</option>
                         </select>
                     </div>
@@ -157,7 +158,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary fw-bold">Simpan User</button>
+                    <button type="submit" class="btn btn-primary fw-bold">Simpan Pengguna</button>
                 </div>
             </form>
         </div>
